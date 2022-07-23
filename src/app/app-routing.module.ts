@@ -1,7 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EmployeesListComponent } from './components/employees/employees-list/employees-list.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    // Home page as empty path
+    path: '',
+    component: EmployeesListComponent
+  },
+  {
+    // Same page when employees is selected
+    path: 'employees',
+    component: EmployeesListComponent
+  }
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
