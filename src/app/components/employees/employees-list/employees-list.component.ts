@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/models/employee.model';
+import { EmployeesService } from 'src/app/services/employees.service';
 
 @Component({
   selector: 'app-employees-list',
@@ -8,28 +9,18 @@ import { Employee } from 'src/app/models/employee.model';
 })
 export class EmployeesListComponent implements OnInit {
 
-  employees:Employee[] = [
-    {
-      id: '5b4ed4cc-j35ksn5jslj',
-      name:'Haseeb Ahmed',
-      email: 'haseebahmed02@gmail.com',
-      phone:3338437949,
-      salary:60000,
-      department:'ATM'
-    },
-    {
-      id: '8htks5h69-j35ksn5jslj',
-      name:'Umair Ahmed',
-      email: 'umairahmed02@gmail.com',
-      phone:3338437949,
-      salary:100000,
-      department:'QPI'
-    }
-  ];
-  constructor() { }
+  employees:Employee[] = [];
+  constructor(private employeesService: EmployeesService) { }
 
   ngOnInit(): void {
-
+    this.employeesService.getAllEmployees()
+    .subscribe({
+      next: (employees) => {
+        this.employees = employees;
+      },
+      error: (response) => {
+        console.log(response);
+      }
+    })
   }
-
 }

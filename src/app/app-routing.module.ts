@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddEmployeeComponent } from './components/employees/add-employee/add-employee.component';
 import { EmployeesListComponent } from './components/employees/employees-list/employees-list.component';
 
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
     // Same page when employees is selected
     path: 'employees',
     component: EmployeesListComponent
+  },
+  {
+    path:'employees/add',
+    component: AddEmployeeComponent
   }
 
 ];
